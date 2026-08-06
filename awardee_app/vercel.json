@@ -1,16 +1,22 @@
 {
   "version": 2,
-  "buildCommand": "composer install --no-dev --optimize-autoloader",
+  "buildCommand": "composer install --no-dev --optimize-autoloader && mkdir -p writable/cache writable/logs writable/session writable/uploads",
   "env": {
     "CI_ENVIRONMENT": "production",
     "COMPOSER_VENDOR_DIR": "./vendor"
   },
   "functions": {
     "public/index.php": {
-      "runtime": "php-8.2"
+      "runtime": "php-8.2",
+      "memory": 512,
+      "maxDuration": 30
     }
   },
   "routes": [
+    {
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "/public/index.php"

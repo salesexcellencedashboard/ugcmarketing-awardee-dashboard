@@ -1,9 +1,0 @@
-/.git
-/node_modules
-/.vercel
-/tests
-/phpunit.dist.xml
-/.env.testing
-/.env.development
-/SYSTEM_DOCUMENTATION.md
-/.DS_Store
