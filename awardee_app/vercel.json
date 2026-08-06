@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "buildCommand": "composer install --no-dev --optimize-autoloader",
+  "env": {
+    "CI_ENVIRONMENT": "production",
+    "COMPOSER_VENDOR_DIR": "./vendor"
+  },
+  "functions": {
+    "public/index.php": {
+      "runtime": "php-8.2"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/public/index.php"
+    }
+  ]
+}
