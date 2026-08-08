@@ -6,7 +6,7 @@
     "COMPOSER_VENDOR_DIR": "./vendor"
   },
   "functions": {
-    "public/index.php": {
+    "api/index.php": {
       "runtime": "php-8.2",
       "memory": 512,
       "maxDuration": 30
@@ -23,7 +23,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/public/index.php"
+      "dest": "/api/index.php"
     }
   ]
 }

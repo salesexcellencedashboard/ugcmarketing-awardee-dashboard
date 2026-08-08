@@ -199,4 +199,18 @@ class App extends BaseConfig
      * @see http://www.w3.org/TR/CSP/
      */
     public bool $CSPEnabled = false;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        // Allow the production base URL to be set via environment variable
+        // (e.g., APP_BASEURL set in Vercel environment variables)
+        if (ENVIRONMENT === 'production') {
+            $baseURL = getenv('APP_BASEURL');
+            if ($baseURL !== false && $baseURL !== '') {
+                $this->baseURL = rtrim($baseURL, '/') . '/';
+            }
+        }
+    }
 }

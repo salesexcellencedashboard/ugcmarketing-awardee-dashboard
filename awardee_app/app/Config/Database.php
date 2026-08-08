@@ -87,5 +87,20 @@ class Database extends Config
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
         }
+
+        // Allow production database credentials to be set via environment variables
+        // (e.g., Vercel environment variables, Railway, Render, etc.)
+        if (ENVIRONMENT === 'production') {
+            $env = static function (string $key, ?string $default = null): ?string {
+                $value = getenv($key);
+                return ($value === false || $value === '') ? $default : $value;
+            };
+
+            $this->default['hostname'] = $env('DB_HOST', $this->default['hostname']);
+            $this->default['database'] = $env('DB_NAME', $this->default['database']);
+            $this->default['username'] = $env('DB_USER', $this->default['username']);
+            $this->default['password'] = $env('DB_PASSWORD', $this->default['password']);
+            $this->default['port']     = (int) $env('DB_PORT', $this->default['port']);
+        }
     }
 }
