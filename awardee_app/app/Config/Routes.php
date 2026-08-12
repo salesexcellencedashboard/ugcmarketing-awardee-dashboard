@@ -143,12 +143,12 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('settings/deactivate-admin/(:num)', 'SettingsController::deactivateAdmin/$1');
     $routes->get('settings/activate-admin/(:num)', 'SettingsController::activateAdmin/$1');
 
-    // Admin-only sample route group (expand in next modules)
+    // Admin-only route group (expand in next modules)
     // $routes->group('admin', ['filter' => 'role:admin'], static function ($routes) {
     //     $routes->get('users', 'Admin\UserController::index');
     // });
 
-    // Management-only sample route group (expand in next modules)
+    // Management-only route group (expand in next modules)
     // $routes->group('management', ['filter' => 'role:management'], static function ($routes) {
     //     $routes->get('reports', 'Management\ReportController::index');
     // });

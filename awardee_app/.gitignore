@@ -66,6 +66,16 @@ Vagrantfile
 php_errors.log
 
 #-------------------------
+# User Uploads (public)
+#-------------------------
+/public/uploads/DATA/*
+!/public/uploads/DATA/.gitkeep
+/public/uploads/photos/*
+!/public/uploads/photos/.gitkeep
+/public/uploads/profiles/*
+!/public/uploads/profiles/.gitkeep
+
+#-------------------------
 # User Guide Temp Files
 #-------------------------
 /user_guide_src/build/*
@@ -85,6 +95,13 @@ php_errors.log
 # Composer
 #-------------------------
 vendor/
+
+#-------------------------
+# AWARDEE Server Runtime Files
+#-------------------------
+/.server.pid
+/.server.log
+/AwardeeStart.app/
 
 #-------------------------
 # IDE / Development Files

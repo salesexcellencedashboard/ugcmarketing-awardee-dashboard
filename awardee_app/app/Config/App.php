@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost:8083/';
+    public string $baseURL = 'http://localhost/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -204,13 +204,11 @@ class App extends BaseConfig
     {
         parent::__construct();
 
-        // Allow the production base URL to be set via environment variable
-        // (e.g., APP_BASEURL set in Vercel environment variables)
-        if (ENVIRONMENT === 'production') {
-            $baseURL = getenv('APP_BASEURL');
-            if ($baseURL !== false && $baseURL !== '') {
-                $this->baseURL = rtrim($baseURL, '/') . '/';
-            }
+        // Allow the base URL to be set via environment variable
+        // (e.g., APP_BASEURL set in .env or server environment)
+        $baseURL = getenv('APP_BASEURL');
+        if ($baseURL !== false && $baseURL !== '') {
+            $this->baseURL = rtrim($baseURL, '/') . '/';
         }
     }
 }

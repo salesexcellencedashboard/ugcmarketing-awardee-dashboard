@@ -51,6 +51,11 @@ class Filters extends BaseConfig
                     'forgot-password',
                     'index.php/forgot-password',
 
+                    // Analytics & Awardee Photo routes
+                    'data/upload-photo',
+                    'data/get-photos',
+                    'analytics/ai-insights',
+
                     // Data Entry CRUD API routes
                     'data/se-list',
                     'data/se-create',

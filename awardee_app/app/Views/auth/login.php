@@ -17,7 +17,10 @@
 </style>
 
 <div class="text-center mb-4">
-    <h4 class="mb-1">Sa Tibay at Ganda Panalo Ka!</h4>
+    <div class="d-flex justify-content-center align-items-center gap-3">
+        <img src="<?= base_url('Union-Galvasteel-Logo.png') ?>" alt="Union Galvasteel Logo" class="img-fluid" style="max-height: 60px; width: auto;">
+        <img src="<?= base_url('phinmalogo.png') ?>" alt="PHINMA Logo" class="img-fluid" style="max-height: 60px; width: auto;">
+    </div>
 </div>
 
 <?php if (session()->getFlashdata('error')): ?>

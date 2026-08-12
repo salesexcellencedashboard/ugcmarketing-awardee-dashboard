@@ -1441,24 +1441,6 @@ body.ex-dark-mode .ex-header-title h1 span[style*="color: var(--ugc-red)"] {
 
 </div>
 
-<!-- ===== PHOTO EXPAND MODAL (with download) ===== -->
-<div class="ex-photo-modal-overlay" id="exPhotoModalOverlay">
-    <div class="ex-photo-modal">
-        <div class="ex-photo-modal-header">
-            <div class="pm-title">
-                <span>📸 PARTICIPANT PLACEMENT</span>
-            </div>
-            <button class="pm-close-btn" onclick="exClosePhotoModal()">✕</button>
-        </div>
-        <div class="ex-photo-modal-body">
-            <div id="exPhotoModalContent" style="width:100%;display:flex;justify-content:center;"></div>
-        </div>
-        <div class="ex-photo-modal-footer">
-            <button onclick="exDownloadPhoto()">⬇️ Download Placement</button>
-        </div>
-    </div>
-</div>
-
 <!-- ===== EXPORT FORMAT SELECTION MODAL (JPEG/PNG) ===== -->
 <div class="ex-export-modal-overlay" id="exExportModalOverlay" onclick="if(event.target===this)exCloseExportModal()">
     <div class="ex-export-modal">
@@ -3084,18 +3066,6 @@ function renderParticipantData(data) {
         exOpenPhotoModal();
     };
 }
-
-// Close photo modal when clicking outside it
-document.addEventListener('DOMContentLoaded', function() {
-    var photoOverlay = document.getElementById('exPhotoModalOverlay');
-    if (photoOverlay) {
-        photoOverlay.addEventListener('click', function(e) {
-            if (e.target === photoOverlay) {
-                exClosePhotoModal();
-            }
-        });
-    }
-});
 
 // ===== SMART ANALYTICS AI - AUTO GENERATED FINDINGS & RECOMMENDATIONS =====
 // This AI analyzes the EMPLOYEE DATA table (filtered by selected dashboard + category)
