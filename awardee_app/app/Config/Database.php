@@ -88,19 +88,21 @@ class Database extends Config
             $this->defaultGroup = 'tests';
         }
 
-        // Allow production database credentials to be set via environment variables
-        // (e.g., Vercel environment variables, Railway, Render, etc.)
-        if (ENVIRONMENT === 'production') {
-            $env = static function (string $key, ?string $default = null): ?string {
-                $value = getenv($key);
-                return ($value === false || $value === '') ? $default : $value;
-            };
-
-            $this->default['hostname'] = $env('DB_HOST', $this->default['hostname']);
-            $this->default['database'] = $env('DB_NAME', $this->default['database']);
-            $this->default['username'] = $env('DB_USER', $this->default['username']);
-            $this->default['password'] = $env('DB_PASSWORD', $this->default['password']);
-            $this->default['port']     = (int) $env('DB_PORT', $this->default['port']);
+        // Load database configuration from .env file
+        // This works for both local development and production deployments
+        $this->default['hostname'] = env('database.default.hostname', $this->default['hostname']);
+        $this->default['database'] = env('database.default.database', $this->default['database']);
+        $this->default['username'] = env('database.default.username', $this->default['username']);
+        $this->default['password'] = env('database.default.password', $this->default['password']);
+        $this->default['DBDriver'] = env('database.default.DBDriver', $this->default['DBDriver']);
+        $this->default['port']     = (int) env('database.default.port', $this->default['port']);
+        $this->default['charset']  = env('database.default.charset', $this->default['charset']);
+        $this->default['DBCollat'] = env('database.default.DBCollat', $this->default['DBCollat']);
+        
+        // Support for Oracle database (adjust driver-specific settings)
+        if ($this->default['DBDriver'] === 'OCI8') {
+            $this->default['DBDebug'] = false; // Disable debug mode for Oracle production
+            $this->default['pConnect'] = true; // Use persistent connections for Oracle
         }
     }
 }

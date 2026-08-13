@@ -23,9 +23,9 @@ $routes->setAutoRoute(false);
 
 // Public Routes
 $routes->get('/', 'AuthController::login');
-$routes->match(['get', 'post'], 'login', 'AuthController::login');
+$routes->match(['GET', 'POST'], 'login', 'AuthController::login');
 $routes->get('logout', 'AuthController::logout');
-$routes->match(['get', 'post'], 'forgot-password', 'AuthController::forgotPassword');
+$routes->match(['GET', 'POST'], 'forgot-password', 'AuthController::forgotPassword');
 
 // Analytics & Awardee Photo Routes (public for API access)
 $routes->post('data/upload-photo', 'AnalyticsController::uploadPhoto');
@@ -41,18 +41,18 @@ $routes->post('data/clear-type/(:any)', 'DataEntryController::clearDataByType/$1
 // Data Entry CRUD API routes (no auth filter - CSRF handled by fetch)
 $routes->get('data/se-list', 'DataEntryController::seList');
 $routes->post('data/se-create', 'DataEntryController::seCreate');
-$routes->match(['put', 'post'], 'data/se-update/(:any)', 'DataEntryController::seUpdate/$1');
+$routes->match(['PUT', 'POST'], 'data/se-update/(:any)', 'DataEntryController::seUpdate/$1');
 $routes->delete('data/se-delete/(:any)', 'DataEntryController::seDelete/$1');
 $routes->get('data/tb-list', 'DataEntryController::tbList');
 $routes->post('data/tb-create', 'DataEntryController::tbCreate');
-$routes->match(['put', 'post'], 'data/tb-update/(:any)', 'DataEntryController::tbUpdate/$1');
+$routes->match(['PUT', 'POST'], 'data/tb-update/(:any)', 'DataEntryController::tbUpdate/$1');
 $routes->delete('data/tb-delete/(:any)', 'DataEntryController::tbDelete/$1');
 $routes->get('data/dashboard', 'DataEntryController::dashboardData');
 $routes->post('data/generate-elite-circle', 'DataEntryController::generateEliteCircle');
 $routes->post('data/delete-elite-circle', 'DataEntryController::deleteEliteCircle');
 $routes->get('data/ec-list', 'DataEntryController::ecList');
 $routes->post('data/ec-create', 'DataEntryController::ecCreate');
-$routes->match(['put', 'post'], 'data/ec-update/(:any)', 'DataEntryController::ecUpdate/$1');
+$routes->match(['PUT', 'POST'], 'data/ec-update/(:any)', 'DataEntryController::ecUpdate/$1');
 $routes->delete('data/ec-delete/(:any)', 'DataEntryController::ecDelete/$1');
 // Elite Circle Records (manual data entry) CRUD
 $routes->get('data/ec-records-list', 'DataEntryController::ecRecordsList');
@@ -62,7 +62,7 @@ $routes->delete('data/ec-records-delete/(:any)', 'DataEntryController::ecRecords
 // Elite Circle Data CRUD routes (formerly steel_deck)
 $routes->get('data/ec-data-list', 'DataEntryController::sdList');
 $routes->post('data/ec-data-create', 'DataEntryController::sdCreate');
-$routes->match(['put', 'post'], 'data/ec-data-update/(:any)', 'DataEntryController::sdUpdate/$1');
+$routes->match(['PUT', 'POST'], 'data/ec-data-update/(:any)', 'DataEntryController::sdUpdate/$1');
 $routes->delete('data/ec-data-delete/(:any)', 'DataEntryController::sdDelete/$1');
 
 // Excel export routes
